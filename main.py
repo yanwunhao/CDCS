@@ -10,7 +10,7 @@ from collections import defaultdict
 class Node:
     """Represents a node in the federated learning network"""
 
-    def __init__(self, node_id, position, reliability=0.8, data_quality=0.9):
+    def __init__(self, node_id, position, reliability=0.6, data_quality=0.9):
         self.node_id = node_id
         self.position = position  # 2D position for calculating distances
         self.reliability = reliability  # Probability of participation
@@ -24,7 +24,7 @@ class Node:
 class FederatedNetwork:
     """Simulates a decentralized federated learning network with correlated participation patterns"""
 
-    def __init__(self, num_nodes=20, correlation_strength=0.3, grid_size=100):
+    def __init__(self, num_nodes=20, correlation_strength=0.4, grid_size=100):
         self.num_nodes = num_nodes
         self.correlation_strength = correlation_strength
         self.grid_size = grid_size
@@ -451,7 +451,7 @@ class FederatedNetwork:
 def run_simulation():
     # Create a network with moderate correlation
     print("Initializing network...")
-    network = FederatedNetwork(num_nodes=25, correlation_strength=0.4)
+    network = FederatedNetwork(num_nodes=20, correlation_strength=0.4)
 
     # Visualize the initial network
     print("Visualizing initial network...")
@@ -471,7 +471,7 @@ def run_simulation():
     print("Optimizing path using Correlated Ant Colony Optimization...")
     start_time = time.time()
     best_path, best_cost = network.simulate_correlated_ant_colony(
-        num_ants=20, num_iterations=100, alpha=1.0, beta=2.5
+        num_ants=20, num_iterations=30, alpha=1.0, beta=2.5
     )
     end_time = time.time()
     print(f"Optimization completed in {end_time - start_time:.2f} seconds")
